@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../style/Book.css';
 
-const API_URL = 'http://localhost:4000/api/books';
+const API_URL = 'https://def-e-library-server.onrender.com/api/books';
 
 const shelves = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12'];
 
