@@ -47,7 +47,7 @@ const AvatarWithFallback = ({ username, avatarUrl }) => {
   );
 };
 
-const API_URL = 'http://localhost:4000/api/users/users';
+const API_URL = 'https://def-e-library-server.onrender.com/api/users/users';
 
 const initialForm = {
   username: '',
