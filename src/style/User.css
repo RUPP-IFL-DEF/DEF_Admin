@@ -1,0 +1,319 @@
+:root {
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --sidebar-bg: #ffffff;
+    --link-color: #555;
+    --link-hover-bg: #e0e0e0;
+    --active-link-bg: #007bff;
+    --active-link-color: #ffffff;
+}
+
+[data-theme='dark'] {
+    --bg-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --sidebar-bg: #2a2a2a;
+    --link-color: #aaa;
+    --link-hover-bg: #333;
+    --active-link-bg: #007bff;
+    --active-link-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Container */
+.user-page {
+    padding: 2rem;
+    max-width: 100%; /* make full width always */
+    margin: 0 auto;
+    color: var(--text-color);
+}
+
+/* Header flex layout */
+.user-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+/* Title fills row but no max-width limit */
+.crud-title {
+    flex-grow: 1;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+    min-width: 0; /* important for flexbox text truncation */
+}
+
+/* Add button aligned right */
+.add-user-btn {
+    flex: 0 0 auto;
+    background-color: var(--active-link-bg);
+    border: none;
+    color: var(--active-link-color);
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+    float: right;
+}
+
+.add-user-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Search below header, full width */
+.search-wrapper {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+/* Search input styling */
+.search-input {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 14px;
+    font-size: 1rem;
+    border: 1px solid var(--link-hover-bg);
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    color: var(--text-color);
+    background-color: var(--sidebar-bg);
+}
+
+.search-input::placeholder {
+    color: var(--link-color);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--active-link-bg);
+}
+
+/* Table styling */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--sidebar-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+/* Table header and cells */
+.user-table th,
+.user-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--link-hover-bg);
+    text-align: left;
+    font-size: 1rem;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0; /* for flex truncation */
+}
+
+.user-table th {
+    background-color: var(--bg-color);
+    font-weight: 600;
+}
+
+/* Avatar round style */
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 2px solid var(--active-link-bg);
+}
+
+/* Buttons style */
+.edit-btn,
+.delete-btn {
+    padding: 7px 14px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 6px;
+    color: var(--active-link-color);
+}
+
+.edit-btn {
+    background-color: var(--active-link-bg);
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+}
+
+.delete-btn:hover {
+    background-color: #a71d2a;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .user-page {
+        padding: 1rem;
+    }
+
+    .user-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .crud-title {
+        font-size: 1.6rem;
+        white-space: normal; /* allow wrap on small */
+        overflow: visible;
+        text-overflow: initial;
+    }
+
+    .add-user-btn {
+        align-self: stretch;
+        width: 100%;
+        text-align: center;
+    }
+
+    .search-input {
+        max-width: 100%;
+    }
+
+    .user-table th,
+    .user-table td {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+        white-space: normal; /* allow wrap */
+    }
+
+    .avatar {
+        width: 36px;
+        height: 36px;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+/* Modal overlay covers entire viewport with a semi-transparent dark background */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* above other content */
+  }
+  
+  /* Modal content box */
+  .modal-content {
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    width: 90%;
+    max-width: 420px;
+    position: relative;
+    animation: fadeInScale 0.3s ease forwards;
+  }
+  
+  /* Smooth fade + scale animation for modal */
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Form inputs */
+  .modal-content input[type="text"],
+  .modal-content input[type="email"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .modal-content input[type="text"]:focus,
+  .modal-content input[type="email"]:focus {
+    border-color: #007bff; /* blue highlight */
+    outline: none;
+  }
+  
+  /* Buttons container */
+  .modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 15px;
+  }
+  
+  /* Buttons styling */
+  .modal-buttons button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .modal-buttons button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .modal-buttons button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .modal-buttons button[type="button"] {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .modal-buttons button[type="button"]:hover {
+    background-color: #999;
+  }
+  

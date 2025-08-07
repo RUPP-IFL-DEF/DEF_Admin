@@ -1,0 +1,165 @@
+.user-page {
+    padding: 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  
+  .user-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+  
+  .crud-title {
+    flex: 1 1 100%; /* full width on small screens */
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+  }
+  
+  .add-user-btn {
+    flex: 0 0 auto;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-user-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .search-wrapper {
+    margin-bottom: 1.5rem;
+    width: 100%; /* full width */
+  }
+  
+  .search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 14px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  }
+  
+  .user-table th,
+  .user-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+  
+  .user-table th {
+    background-color: #f9f9f9;
+    font-weight: 600;
+  }
+  
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 2px solid #007bff;
+  }
+  
+  .edit-btn,
+  .delete-btn {
+    padding: 7px 14px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 6px;
+  }
+  
+  .edit-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .edit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .delete-btn:hover {
+    background-color: #a71d2a;
+  }
+  
+  @media (max-width: 600px) {
+    .user-page {
+      padding: 1rem;
+    }
+  
+    .user-page-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  
+    .crud-title {
+      font-size: 1.6rem;
+    }
+  
+    .add-user-btn {
+      align-self: stretch;
+      width: 100%;
+      text-align: center;
+    }
+  
+    .search-input {
+      max-width: 100%;
+    }
+  
+    .user-table th,
+    .user-table td {
+      padding: 10px 12px;
+      font-size: 0.9rem;
+    }
+  
+    .avatar {
+      width: 36px;
+      height: 36px;
+    }
+  
+    .edit-btn,
+    .delete-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+  }
+  

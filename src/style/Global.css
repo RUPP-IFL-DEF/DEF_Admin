@@ -1,0 +1,212 @@
+:root {
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --sidebar-bg: #ffffff;
+    --link-color: #555;
+    --link-hover-bg: #e0e0e0;
+    --active-link-bg: #007bff;
+    --active-link-color: #ffffff;
+}
+
+[data-theme='dark'] {
+    --bg-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --sidebar-bg: #2a2a2a;
+    --link-color: #aaa;
+    --link-hover-bg: #333;
+    --active-link-bg: #007bff;
+    --active-link-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    /* Default desktop */
+}
+
+.sidebar {
+    width: 240px;
+    background-color: var(--sidebar-bg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 0.3s ease, left 0.3s ease;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sidebar.active {
+    left: 0;
+    /* For mobile toggle */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: var(--link-color);
+    font-size: 16px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background-color: var(--link-hover-bg);
+}
+
+.nav-link.active {
+    background-color: var(--active-link-bg);
+    color: var(--active-link-color);
+}
+
+.theme-toggle-wrapper {
+    margin-top: auto;
+    padding-top: 30px;
+}
+
+.theme-toggle {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    float: right;
+}
+
+.theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-toggle .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--link-hover-bg);
+    color: var(--text-color);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    border-radius: 15px;
+}
+
+.theme-toggle input:checked+.slider {
+    background-color: var(--active-link-bg);
+    color: var(--active-link-color);
+}
+
+.dashboard-content {
+    flex: 1;
+    padding: 30px;
+    background-color: var(--bg-color);
+    transition: background 0.3s ease;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+
+    .logo {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .sidebar.active+.dashboard-content .sidebar-toggle-btn {
+        display: none;
+    }
+
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .dashboard-content h2 {
+        margin-top: 60px;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -240px;
+        /* hide sidebar offscreen */
+        width: 240px;
+        height: 100vh;
+        padding: 20px;
+        background-color: var(--sidebar-bg);
+        border-right: 1px solid rgba(0, 0, 0, 0.05);
+        transition: left 0.3s ease;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar.active {
+        left: 0;
+        /* visible */
+    }
+
+    .dashboard-content {
+        padding: 15px;
+    }
+
+    .sidebar-toggle-btn {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1100;
+        background: none;
+        border: none;
+        color: var(--text-color);
+        cursor: pointer;
+        padding: 6px;
+        border-radius: 8px;
+        transition: background-color 0.2s ease;
+    }
+
+    .sidebar-toggle-btn:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-link {
+        font-size: 18px;
+        padding: 14px 16px;
+    }
+}
+
+/* Optional: Reinforce desktop layout */
+@media (min-width: 769px) {
+    .dashboard-container {
+        flex-direction: row;
+    }
+
+    .sidebar-toggle-btn {
+        display: none;
+    }
+}
